@@ -14,7 +14,10 @@ namespace platzi_curso_csharp_Etapa7.Controllers
             escuela.AñoDeCreación= 2005;    
             escuela.UniqueId = Guid.NewGuid().ToString();        
             escuela.Nombre= "Platzi Escuela";
-
+            escuela.Ciudad="San jose";
+            escuela.Pais="Costa Rica";
+            escuela.Dirección="Avenida Segunda";
+            escuela.TipoEscuela= TiposEscuela.Secundaria;
             ViewBag.cosaDinamica = "La Monja";
             //Retorna la vista y el pasa el modelo (datos)
             return View(escuela);
