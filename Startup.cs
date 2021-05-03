@@ -50,7 +50,7 @@ namespace platzi_curso_csharp_Etapa7
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Escuela}/{action=Index}/{id?}");
             });
         }
     }
