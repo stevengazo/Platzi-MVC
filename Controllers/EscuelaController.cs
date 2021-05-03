@@ -11,8 +11,8 @@ namespace platzi_curso_csharp_Etapa7.Controllers
         public IActionResult Index()
         {
             var escuela = new Escuela();
-            escuela.AñoFundación= 2005;
-            escuela.EscuelaId= Guid.NewGuid().ToString();
+            escuela.AñoDeCreación= 2005;    
+            escuela.UniqueId = Guid.NewGuid().ToString();        
             escuela.Nombre= "Platzi Escuela";
 
             ViewBag.cosaDinamica = "La Monja";
