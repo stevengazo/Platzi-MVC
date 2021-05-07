@@ -9,6 +9,7 @@ namespace platzi_curso_csharp_Etapa7.Controllers
     {
 
         public IActionResult Index(){
+            ViewBag.Fecha= DateTime.Now;
             return View(new Asignatura{Nombre="Programación",     UniqueId= Guid.NewGuid().ToString()} );
         }
         public IActionResult MultiAsignatura()
@@ -25,6 +26,8 @@ namespace platzi_curso_csharp_Etapa7.Controllers
             ViewBag.Fecha = DateTime.Now;
             return View("MultiAsignatura",listaAsignaturas);
         }
+
+        
 
     }
 }
