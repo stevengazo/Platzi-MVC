@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace platzi_curso_csharp_Etapa7
+namespace Platzi_MVC_CSharp
 {
     public class Program
     {

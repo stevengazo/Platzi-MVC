@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace platzi_curso_csharp_Etapa7
+namespace Platzi_MVC_CSharp
 {
     public class Startup
     {

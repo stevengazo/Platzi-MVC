@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
-using platzi_curso_csharp_Etapa7.Models;
+using Platzi_MVC_CSharp.Models;
 using System;
 using System.Collections.Generic;
 
-namespace platzi_curso_csharp_Etapa7.Controllers
+namespace Platzi_MVC_CSharp.Controllers
 {
     public class AsignaturaController : Controller
     {

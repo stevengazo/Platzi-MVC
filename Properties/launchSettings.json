@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "platzi_curso_csharp_Etapa7": {
+    "Platzi_MVC_CSharp": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

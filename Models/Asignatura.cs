@@ -1,6 +1,6 @@
 using System;
 
-namespace platzi_curso_csharp_Etapa7.Models
+namespace Platzi_MVC_CSharp.Models
 {
     public class Asignatura:ObjetoEscuelaBase
     {

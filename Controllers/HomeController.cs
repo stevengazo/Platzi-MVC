@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using platzi_curso_csharp_Etapa7.Models;
+using Platzi_MVC_CSharp.Models;
 
-namespace platzi_curso_csharp_Etapa7.Controllers
+namespace Platzi_MVC_CSharp.Controllers
 {
     public class HomeController : Controller
     {
