@@ -11,7 +11,7 @@ namespace Platzi_MVC_CSharp.Controllers
 
         public IActionResult Index(){
             ViewBag.Fecha= DateTime.Now;
-            return View(new Alumno{Nombre="Pepe ", UniqueId= Guid.NewGuid().ToString()} );
+            return View(new Alumno{Nombre="Pepe ", Id= Guid.NewGuid().ToString()} );
         }
         public IActionResult MultiAlumno()
         {
@@ -31,9 +31,9 @@ namespace Platzi_MVC_CSharp.Controllers
                                from n2 in nombre2
                                from a1 in apellido1
                                select new Alumno {  Nombre = $"{n1} {n2} {a1}",
-                                                    UniqueId = Guid.NewGuid().ToString() };
+                                                    Id = Guid.NewGuid().ToString() };
 
-            return listaAlumnos.OrderBy((al) => al.UniqueId).ToList();
+            return listaAlumnos.OrderBy((al) => al.Id).ToList();
         }
 
 

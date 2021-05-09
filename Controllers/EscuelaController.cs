@@ -16,14 +16,8 @@ namespace Platzi_MVC_CSharp.Controllers
         public IActionResult Index()
         {
             var escuela = new Escuela();
-           /* escuela.AñoDeCreación= 2005;    
-            escuela.UniqueId = Guid.NewGuid().ToString();        
-            escuela.Nombre= "Platzi Escuela";
-            escuela.Ciudad="San jose";
-            escuela.Pais="Costa Rica";
-            escuela.Dirección="Avenida Segunda";
-            escuela.TipoEscuela= TiposEscuela.Secundaria;
-            ViewBag.cosaDinamica = "La Monja";*/
+
+            ViewBag.cosaDinamica = "La Monja";
             escuela =this._context.Escuelas.FirstOrDefault();
             //Retorna la vista y el pasa el modelo (datos)
             return View(escuela);
