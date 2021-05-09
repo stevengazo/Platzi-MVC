@@ -8,7 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using Microsoft.EntityFrameworkCore;
+using Platzi_MVC_CSharp.Models;
 namespace Platzi_MVC_CSharp
 {
     public class Startup
@@ -24,6 +25,9 @@ namespace Platzi_MVC_CSharp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<EscuelaContext>(
+                option => option.UseInMemoryDatabase(databaseName:"TestDB")
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
