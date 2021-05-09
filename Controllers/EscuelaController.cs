@@ -13,14 +13,14 @@ namespace Platzi_MVC_CSharp.Controllers
             this._context= context;
         }
         /// Metodo para llamar Index en la vista Index
+    
         public IActionResult Index()
-        {
-            var escuela = new Escuela();
-
+        {            
             ViewBag.cosaDinamica = "La Monja";
-            escuela =this._context.Escuelas.FirstOrDefault();
+            var escuela =this._context.Escuelas.FirstOrDefault();
             //Retorna la vista y el pasa el modelo (datos)
             return View(escuela);
         }
+
     }
 }

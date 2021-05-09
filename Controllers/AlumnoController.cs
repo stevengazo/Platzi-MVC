@@ -9,33 +9,24 @@ namespace Platzi_MVC_CSharp.Controllers
     public class AlumnoController : Controller
     {
 
-        public IActionResult Index(){
-            ViewBag.Fecha= DateTime.Now;
-            return View(new Alumno{Nombre="Pepe ", Id= Guid.NewGuid().ToString()} );
+        public IActionResult Index()
+        {
+            ViewBag.Fecha = DateTime.Now;
+            return View(_context.Alumnos.FirstOrDefault());
         }
         public IActionResult MultiAlumno()
-        {
-            List<Alumno> listaAlumno = GenerarAlumnosAlAzar();  
+        {        
             ViewBag.cosaDinamica = "Prueba";
             ViewBag.Fecha = DateTime.Now;
-            return View("MultiAlumno",listaAlumno);
+            return View("MultiAlumno", this._context.Asignaturas);
         }
 
-         private List<Alumno> GenerarAlumnosAlAzar()
+        //constructor de la clase y especificación del DBContext para acceso a la DB
+        private EscuelaContext _context;
+        public AlumnoController(EscuelaContext context)
         {
-            string[] nombre1 = { "Alba", "Felipa", "Eusebio", "Farid", "Donald", "Alvaro", "Nicolás" };
-            string[] apellido1 = { "Ruiz", "Sarmiento", "Uribe", "Maduro", "Trump", "Toledo", "Herrera" };
-            string[] nombre2 = { "Freddy", "Anabel", "Rick", "Murty", "Silvana", "Diomedes", "Nicomedes", "Teodoro" };
-
-            var listaAlumnos = from n1 in nombre1
-                               from n2 in nombre2
-                               from a1 in apellido1
-                               select new Alumno {  Nombre = $"{n1} {n2} {a1}",
-                                                    Id = Guid.NewGuid().ToString() };
-
-            return listaAlumnos.OrderBy((al) => al.Id).ToList();
+            this._context = context;
         }
-
 
     }
 }

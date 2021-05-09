@@ -32,6 +32,7 @@ namespace Platzi_MVC_CSharp.Models
             escuela.Dirección = "Avenida Segunda";
             escuela.TipoEscuela = TiposEscuela.Secundaria;
 
+            //siembra de datos en la tabla escuela si no hay tablas y datos
             modelBuilder.Entity<Escuela>().HasData(escuela);
             modelBuilder.Entity<Asignatura>().HasData(
                 new Asignatura { Nombre = "Matematicas", Id = Guid.NewGuid().ToString() },
