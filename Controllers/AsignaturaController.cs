@@ -8,10 +8,11 @@ namespace Platzi_MVC_CSharp.Controllers
 {
     public class AsignaturaController : Controller
     {
-
-        public IActionResult Index(){
-            ViewBag.Fecha= DateTime.Now;
-            return View(_context.Asignaturas.FirstOrDefault());        
+        public IActionResult Index(string AsignaturaId){
+            var asignatura = from asig in _context.Asignaturas
+                            where asig.Id == AsignaturaId
+                            select asig;
+            return View(asignatura.SingleOrDefault());
         }
         public IActionResult MultiAsignatura()
         {        

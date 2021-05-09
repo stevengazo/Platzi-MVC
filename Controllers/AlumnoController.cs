@@ -18,7 +18,7 @@ namespace Platzi_MVC_CSharp.Controllers
         {        
             ViewBag.cosaDinamica = "Prueba";
             ViewBag.Fecha = DateTime.Now;
-            return View("MultiAlumno", this._context.Asignaturas);
+            return View("MultiAlumno", this._context.Alumnos.ToList());
         }
 
         //constructor de la clase y especificación del DBContext para acceso a la DB

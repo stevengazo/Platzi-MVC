@@ -16,10 +16,10 @@ namespace Platzi_MVC_CSharp.Controllers
     
         public IActionResult Index()
         {            
-            ViewBag.cosaDinamica = "La Monja";
-            var escuela =this._context.Escuelas.FirstOrDefault();
+            var Escuela = this._context.Escuelas.FirstOrDefault();
+            ViewBag.cosaDinamica = "La Monja";        
             //Retorna la vista y el pasa el modelo (datos)
-            return View(escuela);
+            return View(Escuela);
         }
 
     }

@@ -22,7 +22,7 @@ namespace Platzi_MVC_CSharp.Models
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            OnModelCreating(modelBuilder);
+            //OnModelCreating(modelBuilder);
             var escuela = new Escuela(); ;
             escuela.AñoDeCreación = 2005;
             escuela.Id = Guid.NewGuid().ToString();
@@ -31,9 +31,6 @@ namespace Platzi_MVC_CSharp.Models
             escuela.Pais = "Costa Rica";
             escuela.Dirección = "Avenida Segunda";
             escuela.TipoEscuela = TiposEscuela.Secundaria;
-
-            //siembra de datos en la tabla escuela si no hay tablas y datos
-            modelBuilder.Entity<Escuela>().HasData(escuela);
 
             //Cargar Cursos Escuela
             var cursos = CargarCursos(escuela);
