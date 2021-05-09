@@ -8,8 +8,8 @@ namespace Platzi_MVC_CSharp.Controllers
 {
     public class AsignaturaController : Controller
     {
-        [Route("Asignatura/Index")]
-
+        [Route("Asignatura")]
+        [Route("Asignatura/Index")]        
         [Route("Asignatura/Index/{asignaturaId}")]
         public IActionResult Index(string asignaturaId)
         {

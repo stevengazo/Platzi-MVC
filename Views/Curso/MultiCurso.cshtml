@@ -1,8 +1,8 @@
-@model Alumno
+@model List<Curso>
 
 
 @{
-    ViewData["Title"]= "Información Alumno";
+    ViewData["Title"]= "Información Cursos";
     Layout="Simple";
 }
 
@@ -11,9 +11,6 @@
 
 <strong>Vista Parcial</strong>
 
-<partial name ="ObjetoEscuelaBaseSimple" />
-
-
-
+<partial  name="ListaObjetoEscuelaBase" ></partial>
 
 <p> Server time: <i>@ViewBag.Fecha</i></p>
