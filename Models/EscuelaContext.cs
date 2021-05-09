@@ -34,19 +34,55 @@ namespace Platzi_MVC_CSharp.Models
 
             //siembra de datos en la tabla escuela si no hay tablas y datos
             modelBuilder.Entity<Escuela>().HasData(escuela);
-            modelBuilder.Entity<Asignatura>().HasData(
-                new Asignatura { Nombre = "Matematicas", Id = Guid.NewGuid().ToString() },
-                new Asignatura { Nombre = "Educación Fisica", Id = Guid.NewGuid().ToString() },
-                new Asignatura { Nombre = "Castellano", Id = Guid.NewGuid().ToString() },
-                new Asignatura { Nombre = "Programación", Id = Guid.NewGuid().ToString() },
-                new Asignatura { Nombre = "Ciencias Naturales", Id = Guid.NewGuid().ToString() }
 
-            );
+            //Cargar Cursos Escuela
+            var cursos =CargarCursos(escuela);
 
-            modelBuilder.Entity<Alumno>().HasData(GenerarAlumnosAlAzar().ToArray());
+
+
+            //x cada curso  cargar: asignaturas 
+            var asignaturas = CargarAsignaturas(cursos);
+
+            //x cada curso cargar: alumnos
+            var alumnos = CargarAlumnos(cursos);
+
+            modelBuilder.Entity<Escuela>().HasData(escuela);
+            modelBuilder.Entity<Curso>().HasData(cursos.ToArray());
+            modelBuilder.Entity<Asignatura>().HasData(asignaturas.ToArray());
+            modelBuilder.Entity<Alumno>().HasData(alumnos.ToArray());
+            
+
+            static List<Curso> CargarCursos(Escuela escuela)
+            {
+                return (new List<Curso>(){
+                new Curso(){Id= Guid.NewGuid().ToString(), EscuelaId= escuela.Id, Nombre="101",Jornada= TiposJornada.Mañana},
+                new Curso(){Id= Guid.NewGuid().ToString(), EscuelaId= escuela.Id, Nombre="102",Jornada= TiposJornada.Mañana},
+                new Curso(){Id= Guid.NewGuid().ToString(), EscuelaId= escuela.Id, Nombre="103",Jornada= TiposJornada.Tarde},
+                new Curso(){Id= Guid.NewGuid().ToString(), EscuelaId= escuela.Id, Nombre="104",Jornada= TiposJornada.Noche},
+                new Curso(){Id= Guid.NewGuid().ToString(), EscuelaId= escuela.Id, Nombre="105",Jornada= TiposJornada.Mañana},
+            });
+            }
         }
 
-        private List<Alumno> GenerarAlumnosAlAzar()
+        private List<Asignatura> CargarAsignaturas(List<Curso> Cursos)
+        {
+            var ListaCompleta = new List<Asignatura>();
+            foreach (var Curso in Cursos)
+            {
+                var tmpList= new List<Asignatura>{
+                    new Asignatura{Id= Guid.NewGuid().ToString(),CursoId= Curso.Id, Nombre= "Matematicas"},
+                    new Asignatura{Id= Guid.NewGuid().ToString(),CursoId= Curso.Id, Nombre= "Español"},
+                    new Asignatura{Id= Guid.NewGuid().ToString(),CursoId= Curso.Id, Nombre= "Ciencias"},
+                    new Asignatura{Id= Guid.NewGuid().ToString(),CursoId= Curso.Id, Nombre= "Ingles"},
+                    new Asignatura{Id= Guid.NewGuid().ToString(),CursoId= Curso.Id, Nombre= "Programación"}
+                };
+                ListaCompleta.AddRange(tmpList);
+                //Curso.Asignaturas= tmpList;
+            }
+            return ListaCompleta;
+        }
+
+        private List<Alumno> GenerarAlumnosAlAzar(int cantidad, Curso curso)
         {
             string[] nombre1 = { "Alba", "Felipa", "Eusebio", "Farid", "Donald", "Alvaro", "Nicolás" };
             string[] apellido1 = { "Ruiz", "Sarmiento", "Uribe", "Maduro", "Trump", "Toledo", "Herrera" };
@@ -58,10 +94,23 @@ namespace Platzi_MVC_CSharp.Models
                                select new Alumno
                                {
                                    Nombre = $"{n1} {n2} {a1}",
-                                   Id = Guid.NewGuid().ToString()
+                                   Id = Guid.NewGuid().ToString(),
+                                    CursoId= curso.Id
                                };
 
-            return listaAlumnos.OrderBy((al) => al.Id).ToList();
+            return listaAlumnos.OrderBy((al) => al.Id).Take(cantidad).ToList();
+        }
+
+        private List<Alumno> CargarAlumnos(List<Curso> cursos){
+            var listaAlumnos= new List<Alumno>();
+            Random rnd = new Random();
+            foreach (var _curso in cursos){
+                int cantRandom= rnd.Next(5,20);
+                var tmpList = GenerarAlumnosAlAzar(cantRandom,_curso);
+                listaAlumnos.AddRange(tmpList);
+
+            }
+            return listaAlumnos;
         }
     }
 }
