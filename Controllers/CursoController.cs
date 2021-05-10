@@ -9,7 +9,6 @@ namespace Platzi_MVC_CSharp.Controllers
     public class CursoController : Controller
     {
         [Route("Curso")]
-        [Route("Curso/{id}")]
         [Route("Curso/Index")]
         [Route("Curso/Index/{id}")]
         public IActionResult Index(string id)
@@ -18,8 +17,8 @@ namespace Platzi_MVC_CSharp.Controllers
             if (!string.IsNullOrWhiteSpace(id))
             {
                 var curso = from curs in _context.Cursos
-                             where curs.Id == id
-                             select curs;
+                            where curs.Id == id
+                            select curs;
                 return View(curso.SingleOrDefault());
             }
             else
@@ -35,6 +34,25 @@ namespace Platzi_MVC_CSharp.Controllers
             return View("MultiCurso", this._context.Cursos.ToList());
         }
 
+       // [Route("Curso/Create")]
+        public IActionResult Create()
+        {
+            ViewBag.Fecha = DateTime.Now;
+            return View();
+        }
+
+        //[Route("Curso/Create")]
+        [HttpPost]
+        public IActionResult Create(Curso curso)
+        {
+            ViewBag.Fecha = DateTime.Now;
+            var escuela = this._context.Escuelas.SingleOrDefault();
+            curso.Id= Guid.NewGuid().ToString();
+            curso.EscuelaId= escuela.Id;
+            this._context.Cursos.Add(curso);
+            this._context.SaveChanges();
+            return View();
+        }
         //constructor de la clase y especificación del DBContext para acceso a la DB
         private EscuelaContext _context;
         public CursoController(EscuelaContext context)
