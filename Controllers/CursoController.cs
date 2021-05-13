@@ -19,7 +19,7 @@ namespace Platzi_MVC_CSharp.Controllers
                 var curso = from curs in _context.Cursos
                             where curs.Id == id
                             select curs;
-                return View(curso.SingleOrDefault());
+                return View("Update", curso.SingleOrDefault());
             }
             else
             {
@@ -53,22 +53,60 @@ namespace Platzi_MVC_CSharp.Controllers
                 curso.EscuelaId = escuela.Id;
                 this._context.Cursos.Add(curso);
                 this._context.SaveChanges();
-                ViewBag.MensajeExtra="Curso Creado";
-                 return View("Index",curso);
+                ViewBag.MensajeExtra = "Curso Creado";
+                return View("Index", curso);
             }
             else
             {
                 return View(curso);
             }
-
-
         }
         //constructor de la clase y especificación del DBContext para acceso a la DB
+
         private EscuelaContext _context;
         public CursoController(EscuelaContext context)
         {
             this._context = context;
         }
 
+        [Route("Curso/Update")]
+        [Route("Curso/Update/{id}")]
+        public IActionResult Update(string id)
+        {
+            ViewBag.cosaDinamica = "Prueba";
+            ViewBag.Fecha = DateTime.Now;
+            if (!string.IsNullOrWhiteSpace(id))
+            {
+                var curso = from curs in _context.Cursos
+                            where curs.Id == id
+                            select curs;
+                return View("Update", curso.FirstOrDefault());
+            }
+            else
+            {
+                return View("MultiCurso", this._context.Cursos.ToList());
+            }
+        }
+
+        [HttpPost]
+        [Route("Curso/Update/{id}")]
+        public IActionResult Update(Curso curso)
+        {
+            if (curso != null)
+            {
+                var aux = (from cur in this._context.Cursos
+                          where cur.Id == curso.Id
+                          select cur).FirstOrDefault();
+                aux.Nombre = curso.Nombre;
+                aux.Jornada= curso.Jornada;
+                aux.Dirección= curso.Dirección; 
+                this._context.Cursos.Update(aux);       
+                this._context.SaveChanges();
+                return View("Index",curso);              
+            }else{
+                return View("MultiCurso", this._context.Cursos.ToList());
+            }
+
+        }
     }
 }
