@@ -3,14 +3,17 @@
 
 @{
     ViewData["Title"]= "Información Alumnos";
-    Layout="Simple";
 }
 
 
 <h1>  @ViewData["Title"]</h1>
 
-<strong>Vista Parcial</strong>
-
+<br>
+<di >  
+    <button type="button" class="btn btn-success">
+        <a class="nav-link text-light" asp-area="" asp-controller="Alumno" asp-action="Create">Crear Alumno</a>
+    </button>
+</di>
 <partial  name="ListaObjetoEscuelaBase" ></partial>
 
 <p> Server time: <i>@ViewBag.Fecha</i></p>

@@ -2,15 +2,16 @@
 
 @{
     ViewData["Title"]= "Información Asignaturas";
-    Layout="Simple";
 }
 
 
 <h1>  @ViewData["Title"]</h1>
-
-<strong>Vista Parcial</strong>
-
-
+<br>
+<di >  
+    <button type="button" class="btn btn-success">
+        <a class="nav-link text-light" asp-area="" asp-controller="Asignatura" asp-action="Create">Crear Asignatura</a>
+    </button>
+</di>
 <partial name="ListaObjetoEscuelaBase" ></partial>
 
 

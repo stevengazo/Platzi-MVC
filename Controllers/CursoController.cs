@@ -92,21 +92,44 @@ namespace Platzi_MVC_CSharp.Controllers
         [Route("Curso/Update/{id}")]
         public IActionResult Update(Curso curso)
         {
+            ViewBag.Fecha = DateTime.Now;
             if (curso != null)
             {
                 var aux = (from cur in this._context.Cursos
-                          where cur.Id == curso.Id
-                          select cur).FirstOrDefault();
+                           where cur.Id == curso.Id
+                           select cur).FirstOrDefault();
                 aux.Nombre = curso.Nombre;
-                aux.Jornada= curso.Jornada;
-                aux.Dirección= curso.Dirección; 
-                this._context.Cursos.Update(aux);       
+                aux.Jornada = curso.Jornada;
+                aux.Dirección = curso.Dirección;
+                this._context.Cursos.Update(aux);
                 this._context.SaveChanges();
-                return View("Index",curso);              
-            }else{
+                return View("Index", curso);
+            }
+            else
+            {
                 return View("MultiCurso", this._context.Cursos.ToList());
             }
 
+        }
+
+        [Route("Curso/Delete")]
+        [Route("Curso/Delete/{id}")]
+        public IActionResult Delete(string id)
+        {
+            ViewBag.Fecha = DateTime.Now;
+            if (!string.IsNullOrWhiteSpace(id))
+            {
+                var curso = (
+                    from cur in this._context.Cursos
+                    where cur.Id == id
+                    select cur
+                    ).FirstOrDefault();
+                return View("Delete",curso);
+            }
+            else
+            {            
+                return View("MultiCurso", this._context.Cursos.ToList());
+            }
         }
     }
 }

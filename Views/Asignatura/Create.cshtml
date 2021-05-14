@@ -1,0 +1,21 @@
+@model Asignatura
+
+@{
+    ViewData["Title"] = "Creación de Asignatura";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div asp-validation-summary="All" style="color: red;" ></div>
+<form method="POST">
+    <div>
+        <label asp-for="Nombre" ></label>
+        <input asp-for="Nombre"/>
+    </div>
+    <div>
+        <label asp-for="CursoId"></label>
+    </div>
+    <input type="submit"/>
+</form>
+
+<p><i>Server Time: @ViewBag.Fecha</i></p>
