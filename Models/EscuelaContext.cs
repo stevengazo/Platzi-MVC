@@ -43,7 +43,7 @@ namespace Platzi_MVC_CSharp.Models
 
             //x cada alumno en una asignatura cargar una evaluación
             var evaluaciones = CargarEvaluaciones(alumnos, asignaturas);
-        
+
 
 
             // SIEMBRA DE DATOS
@@ -56,11 +56,11 @@ namespace Platzi_MVC_CSharp.Models
             static List<Curso> CargarCursos(Escuela escuela)
             {
                 return (new List<Curso>(){
-                new Curso(){Id= Guid.NewGuid().ToString(), EscuelaId= escuela.Id, Nombre="101",Jornada= TiposJornada.Mañana},
-                new Curso(){Id= Guid.NewGuid().ToString(), EscuelaId= escuela.Id, Nombre="102",Jornada= TiposJornada.Mañana},
-                new Curso(){Id= Guid.NewGuid().ToString(), EscuelaId= escuela.Id, Nombre="103",Jornada= TiposJornada.Tarde},
-                new Curso(){Id= Guid.NewGuid().ToString(), EscuelaId= escuela.Id, Nombre="104",Jornada= TiposJornada.Noche},
-                new Curso(){Id= Guid.NewGuid().ToString(), EscuelaId= escuela.Id, Nombre="105",Jornada= TiposJornada.Mañana},
+                new Curso(){Id= Guid.NewGuid().ToString(), EscuelaId= escuela.Id, Nombre="101",Jornada= TiposJornada.Mañana, Dirección="Avenida"},
+                new Curso(){Id= Guid.NewGuid().ToString(), EscuelaId= escuela.Id, Nombre="102",Jornada= TiposJornada.Mañana, Dirección="Avenida"},
+                new Curso(){Id= Guid.NewGuid().ToString(), EscuelaId= escuela.Id, Nombre="103",Jornada= TiposJornada.Tarde, Dirección="Avenida"},
+                new Curso(){Id= Guid.NewGuid().ToString(), EscuelaId= escuela.Id, Nombre="104",Jornada= TiposJornada.Noche, Dirección="Avenida"},
+                new Curso(){Id= Guid.NewGuid().ToString(), EscuelaId= escuela.Id, Nombre="105",Jornada= TiposJornada.Mañana, Dirección="Avenida"},
             });
             }
         }
