@@ -6,8 +6,13 @@
   </PropertyGroup>
   <!-- Paquetes añadidos para el uso de entityframeworkcore-->
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameWorkCore.Design" Version="5.0.6">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameWorkCore.InMemory" Version="5.0.5" />
     <PackageReference Include="Microsoft.EntityFrameWorkCore.SqlServer" Version="5.0.6" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
 </Project>
