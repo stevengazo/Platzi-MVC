@@ -25,9 +25,19 @@ namespace Platzi_MVC_CSharp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            /*String connString = ConfigurationExtensions.GetConnectionString(this.Configuration,"DefaultConnectionString");
             services.AddDbContext<EscuelaContext>(
-                option => option.UseInMemoryDatabase(databaseName:"TestDB")
+                option => option.UseInMemoryDatabase(databaseName:"Testdb")
+            );*/
+
+            //Conexión a base de datos SQL
+            String connString = ConfigurationExtensions.GetConnectionString(this.Configuration,"DefaultConnectionString");
+            services.AddDbContext<EscuelaContext>(
+                option => option.UseSqlServer(connString)
             );
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
