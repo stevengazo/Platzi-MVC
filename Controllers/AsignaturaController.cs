@@ -35,23 +35,22 @@ namespace Platzi_MVC_CSharp.Controllers
         [Route("Asignatura/Create")]
         public IActionResult Create(Asignatura asignatura)
         {
-            List<string> tmp= new List<string>();
+            List<string> tmp = new List<string>();
             ViewBag.ListaCursosId = from Curso in this._context.Cursos
-                            select Curso.Id.ToList();
+                                    select Curso.Id.ToList();
             return View("Create", asignatura);
         }
-      /*  [Route("Asignatura/Create")]
+        /*
+        [Route("Asignatura/Create")]
         [HttpPost]
-       public IActionResult Create(Asignatura asignatura)
+        public IActionResult Create(Asignatura asignatura)
         {
             ViewBag.Fecha = DateTime.Now;
             if (ModelState.IsValid)
             {
                 var curso = this._context.Cursos;
                 asignatura.Id = Guid.NewGuid().ToString();
-
             }
-
         }*/
 
 
